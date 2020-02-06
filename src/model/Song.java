@@ -1,24 +1,34 @@
 package model;
+import controller.ISongController;
 import interfaces.ISong;
 
-public class Song implements ISong {
-	private String SongName;
+public class Song implements ISong, ISongController {
+	private String songName;
 	private Album album;
 	private Artist artist;
 	
 	public Song(String songName, Album album, Artist artist) {
-		super();
-		SongName = songName;
+		this.songName = songName;
 		this.album = album;
 		this.artist = artist;
 	}
-
-	public String getSongName() {
-		return SongName;
+	
+	public Song(String songName, Album album) {
+		this.songName = songName;
+		this.album = album;
+	}
+	
+	public Song(String songName) {
+		this.songName = songName;
 	}
 
-	public void setSongName(String songName) {
-		SongName = songName;
+	public String getSongName() {
+		return songName;
+	}
+
+	public boolean setSongName(String songName) {
+		this.songName = songName;
+		return true;
 	}
 
 	public Album getAlbum() {
@@ -35,6 +45,14 @@ public class Song implements ISong {
 
 	public void setArtist(Artist artist) {
 		this.artist = artist;
-	}	
+	}
 	
+	public String getSong() {
+		return songName;
+	}
+	
+	@Override
+	public String setSongName(String songName) {
+		return this.songName = songName;
+	}
 }
